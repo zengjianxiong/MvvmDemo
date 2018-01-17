@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MvvmDemo</string>
+    <string name="login_title">Mvvm Demo</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="string_login">Login</string>
+    <string name="invalid_email_password">Please provide a valid email and password.</string>
+</resources>
