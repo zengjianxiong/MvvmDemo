@@ -2,6 +2,10 @@ package com.zeng.www.mvvmdemo.di;
 
 import com.zeng.www.mvvmdemo.ui.login.LoginActivity;
 import com.zeng.www.mvvmdemo.ui.login.LoginActivityModule;
+import com.zeng.www.mvvmdemo.ui.main.MainActivity;
+import com.zeng.www.mvvmdemo.ui.main.MainActivityModule;
+import com.zeng.www.mvvmdemo.ui.splash.SplashActivity;
+import com.zeng.www.mvvmdemo.ui.splash.SplashActivityModule;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -17,4 +21,10 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = LoginActivityModule.class)
     abstract LoginActivity bindLoginActivity();
+
+    @ContributesAndroidInjector(modules = SplashActivityModule.class)
+    abstract SplashActivity bindSplashActivity();
+
+    @ContributesAndroidInjector(modules = MainActivityModule.class)
+    abstract MainActivity bindMainActivity();
 }
