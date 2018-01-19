@@ -26,6 +26,15 @@
 
     </style>
 
+    <style name="TextStyle.Title" parent="TextStyle">
+        <item name="android:textAppearance">@style/TextAppearance.Text.Regular</item>
+    </style>
+
+    <style name="TextStyle.Title.Sub" parent="TextStyle.Title">
+        <item name="android:textAppearance">@style/TextAppearance.Text.Light</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
 
     <style name="MaterialDrawer.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="spinBars">true</item>
