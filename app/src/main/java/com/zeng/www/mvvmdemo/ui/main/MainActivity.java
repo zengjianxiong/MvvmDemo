@@ -66,6 +66,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         setupNavMenu();
         String version = String.format(getString(R.string.string_version), BuildConfig.VERSION_NAME);
         mMainViewModel.setAppVersion(version);
+        mMainViewModel.onNavMenuCreated();
+
     }
 
     private void setupNavMenu() {
@@ -73,6 +75,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         NavHeaderMainBinding navHeaderMainBinding = DataBindingUtil.inflate(
                 getLayoutInflater(), R.layout.nav_header_main, mNavigationView, false);
         navHeaderMainBinding.setViewModel(mMainViewModel);
+        mActivityMainBinding.navView.addHeaderView(navHeaderMainBinding.getRoot());
     }
 
     @Override
