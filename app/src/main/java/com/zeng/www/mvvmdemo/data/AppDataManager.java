@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.zeng.www.mvvmdemo.data.local.db.DbHelper;
 import com.zeng.www.mvvmdemo.data.local.prefs.PreferencesHelper;
+import com.zeng.www.mvvmdemo.data.model.api.BlogResponse;
 import com.zeng.www.mvvmdemo.data.model.api.LoginRequest;
 import com.zeng.www.mvvmdemo.data.model.api.LoginResponse;
 import com.zeng.www.mvvmdemo.data.remote.ApiHeader;
@@ -105,6 +106,11 @@ public class AppDataManager implements DataManager {
     @Override
     public ApiHeader getApiHeader() {
         return mApiHelper.getApiHeader();
+    }
+
+    @Override
+    public Single<BlogResponse> doServiceGetBlogApiCall() {
+        return mApiHelper.doServiceGetBlogApiCall();
     }
 
 

@@ -1,0 +1,29 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.zeng.www.mvvmdemo.ui.feed.blog.BlogViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.zeng.www.mvvmdemo.ui.feed.blog.BlogFragment">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/blogRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_blog_view" />
+
+    </FrameLayout>
+</layout>
+
+

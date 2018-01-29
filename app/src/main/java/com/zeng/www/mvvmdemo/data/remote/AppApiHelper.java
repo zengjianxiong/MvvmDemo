@@ -1,6 +1,7 @@
 package com.zeng.www.mvvmdemo.data.remote;
 
 import com.rx2androidnetworking.Rx2AndroidNetworking;
+import com.zeng.www.mvvmdemo.data.model.api.BlogResponse;
 import com.zeng.www.mvvmdemo.data.model.api.LoginRequest;
 import com.zeng.www.mvvmdemo.data.model.api.LoginResponse;
 
@@ -25,8 +26,13 @@ public class AppApiHelper implements ApiHelper {
         this.mApiHeader = apiHeader;
     }
 
-    public ApiHeader getApiHeader() {
-        return mApiHeader;
+
+    @Override
+    public Single<BlogResponse> doServiceGetBlogApiCall() {
+        return Rx2AndroidNetworking.post(ApiEndPoint.ENDPOINT_BLOG)
+                .addHeaders(mApiHeader.getProtectedApiHeader())
+                .build()
+                .getObjectSingle(BlogResponse.class);
     }
 
     @Override
@@ -36,5 +42,10 @@ public class AppApiHelper implements ApiHelper {
                 .addBodyParameter(request)
                 .build()
                 .getObjectSingle(LoginResponse.class);
+    }
+
+    @Override
+    public ApiHeader getApiHeader() {
+        return mApiHeader;
     }
 }

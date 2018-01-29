@@ -14,25 +14,26 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        tools:openDrawer="start">
+        android:fitsSystemWindows="true">
 
         <android.support.design.widget.CoordinatorLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <android.support.design.widget.AppBarLayout
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/AppTheme.AppBarOverlay">
 
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="?attr/colorPrimary"
-                    app:popupTheme="@style/AppTheme.PopupOverlay" />
+                    style="@style/Toolbar"
+                    app:popupTheme="@style/AppTheme.PopupOverlay"
+                    app:subtitleTextColor="@color/white"
+                    app:title="@string/app_name"
+                    app:titleTextAppearance="@style/Toolbar.TitleText"
+                    app:titleTextColor="@color/white" />
 
             </android.support.design.widget.AppBarLayout>
 
@@ -41,6 +42,15 @@
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+                <Button
+                    android:id="@+id/btn_change_background"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:text="Change Background"
+
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
             </android.support.constraint.ConstraintLayout>
 
 
@@ -48,11 +58,15 @@
 
         <android.support.design.widget.NavigationView
             android:id="@+id/nav_view"
+            style="@style/Widget.Design.NavigationView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:background="@color/white"
             android:fitsSystemWindows="true"
-
+            app:itemBackground="@color/white"
+            app:itemIconTint="@color/black_effective"
+            app:itemTextColor="@color/black_effective"
             app:menu="@menu/activity_main_drawer">
 
             <android.support.v7.widget.AppCompatTextView

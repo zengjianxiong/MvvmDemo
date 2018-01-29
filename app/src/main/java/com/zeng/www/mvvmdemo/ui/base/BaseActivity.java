@@ -33,12 +33,22 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
     private V mViewModel;
 
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         performDependencyInjection();
         super.onCreate(savedInstanceState);
         performDataBinding();
+
+
+    }
+
+    @Override
+    protected void onDestroy() {
+
+
+        super.onDestroy();
     }
 
     /**
