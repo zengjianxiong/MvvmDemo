@@ -1,9 +1,14 @@
 package com.zeng.www.mvvmdemo.ui.feed;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.view.ViewPager;
+import android.view.MenuItem;
 
 import com.zeng.www.mvvmdemo.BR;
 import com.zeng.www.mvvmdemo.R;
@@ -34,6 +39,10 @@ public class FeedActivity extends BaseActivity<ActivityFeedBinding, FeedViewMode
 
     private TabLayout mTabLayout;
 
+    public static Intent getStartIntent(Context context) {
+        Intent intent = new Intent(context, FeedActivity.class);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +88,27 @@ public class FeedActivity extends BaseActivity<ActivityFeedBinding, FeedViewMode
         });
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+                Intent upIntent = NavUtils.getParentActivityIntent(this);
+                upIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
+
+                    TaskStackBuilder.create(this)
+                            .addNextIntentWithParentStack(upIntent)
+                            .startActivities();
+                } else {
+                    NavUtils.navigateUpTo(this, upIntent);
+                }
+                return true;
+            default:
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

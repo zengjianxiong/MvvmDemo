@@ -2,5 +2,8 @@
 
     <style name="TranslucentStatusStyle" parent="AppTheme">
         <item name="android:windowTranslucentStatus">true</item>
+
+        <!--<item name="android:windowLightNavigationBar">false</item>-->
+
     </style>
 </resources>

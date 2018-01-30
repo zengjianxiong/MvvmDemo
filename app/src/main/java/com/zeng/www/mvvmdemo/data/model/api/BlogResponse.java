@@ -70,7 +70,7 @@ public class BlogResponse {
         return result;
     }
 
-    private static class Blog {
+    public static class Blog {
 
         @Expose
         @SerializedName("title")

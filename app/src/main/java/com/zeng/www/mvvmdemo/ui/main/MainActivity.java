@@ -140,7 +140,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         int id = item.getItemId();
         switch (id) {
             case R.id.nav_my_feed:
-                startActivity(new Intent(MainActivity.this, FeedActivity.class));
+                startActivity(FeedActivity.getStartIntent(MainActivity.this));
                 break;
             default:
         }
