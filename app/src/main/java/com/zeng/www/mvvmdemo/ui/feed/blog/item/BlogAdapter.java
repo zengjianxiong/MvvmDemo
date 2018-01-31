@@ -1,11 +1,12 @@
 package com.zeng.www.mvvmdemo.ui.feed.blog.item;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.zeng.www.mvvmdemo.data.model.api.BlogResponse;
+import com.zeng.www.mvvmdemo.databinding.ItemBlogEmptyViewBinding;
 import com.zeng.www.mvvmdemo.databinding.ItemBlogViewBinding;
 import com.zeng.www.mvvmdemo.ui.base.BaseViewHolder;
 
@@ -19,6 +20,10 @@ import java.util.List;
 
 public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
+    public static final int VIEW_TYPE_EMPTY = 0;
+    public static final int VIEW_TYPE_NORMAL = 1;
+
+    private BlogAdapterListener mListener;
 
     private List<BlogResponse.Blog> mBlogList;
 
@@ -26,24 +31,53 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         this.mBlogList = blogList;
     }
 
+    public void setListener(BlogAdapterListener listener) {
+        mListener = listener;
+    }
 
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        switch (viewType) {
+            case VIEW_TYPE_NORMAL:
+                ItemBlogViewBinding blogViewBinding =
+                        ItemBlogViewBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+                return new BlogViewHolder(blogViewBinding);
+            case VIEW_TYPE_EMPTY:
+            default:
+                ItemBlogEmptyViewBinding blogEmptyViewBinding =
+                        ItemBlogEmptyViewBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+                return new BlogEmptyHolder(blogEmptyViewBinding);
+        }
+
     }
 
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
 
+        holder.onBind(position);
+    }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        if (mBlogList != null && mBlogList.size() > 0) {
+            return VIEW_TYPE_NORMAL;
+        } else {
+            return VIEW_TYPE_EMPTY;
+        }
     }
 
     @Override
     public int getItemCount() {
-        return mBlogList.size();
+        if (mBlogList != null && mBlogList.size() > 0) {
+            return mBlogList.size();
+        } else {
+            return 1;
+        }
     }
 
 
-    private class BlogViewHolder extends BaseViewHolder implements BlogItemViewModel.BlogItemViewModelListener{
+    private class BlogViewHolder extends BaseViewHolder implements BlogItemViewModel.BlogItemViewModelListener {
 
         private ItemBlogViewBinding mBinding;
 
@@ -59,7 +93,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         public void onBind(int position) {
             BlogResponse.Blog blog = mBlogList.get(position);
 
-            mBlogItemViewModel = new BlogItemViewModel(blog,this);
+            mBlogItemViewModel = new BlogItemViewModel(blog, this);
 
             mBinding.setViewModel(mBlogItemViewModel);
             mBinding.executePendingBindings();
@@ -68,13 +102,41 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
         @Override
         public void onItemClick(BlogResponse.Blog blog) {
-            Toast.makeText(itemView.getContext(),"onItemClick",Toast.LENGTH_SHORT).show();
+            Toast.makeText(itemView.getContext(), "onItemClick", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onItemLongClick(BlogResponse.Blog blog) {
-            Toast.makeText(itemView.getContext(),"onItemLongClick",Toast.LENGTH_SHORT).show();
+            Toast.makeText(itemView.getContext(), "onItemLongClick", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private class BlogEmptyHolder extends BaseViewHolder implements BlogEmptyViewModel.BlogEmptyViewModelListener {
+        private ItemBlogEmptyViewBinding mBinding;
+
+        public BlogEmptyHolder(ItemBlogEmptyViewBinding binding) {
+            super(binding.getRoot());
+            this.mBinding = binding;
+        }
+
+        @Override
+        public void onBind(int position) {
+
+            BlogEmptyViewModel emptyViewModel = new BlogEmptyViewModel(this);
+            mBinding.setViewModel(emptyViewModel);
+
+        }
+
+        @Override
+        public void onRetryClick() {
+            if (mListener != null) {
+                mListener.onRetryClick();
+            }
+        }
+    }
+
+    public interface BlogAdapterListener {
+        void onRetryClick();
     }
 
 }

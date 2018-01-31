@@ -5,6 +5,8 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.zeng.www.mvvmdemo.ViewModelProviderFactory;
 import com.zeng.www.mvvmdemo.data.DataManager;
+import com.zeng.www.mvvmdemo.data.model.api.BlogResponse;
+import com.zeng.www.mvvmdemo.ui.feed.blog.item.BlogAdapter;
 import com.zeng.www.mvvmdemo.utils.rx.SchedulerProvider;
 
 import java.util.ArrayList;
@@ -28,6 +30,15 @@ public class BlogFragmentModule {
     }
 
 
+    @Provides
+    BlogAdapter provideBlogAdapter() {
+        return new BlogAdapter(new ArrayList<BlogResponse.Blog>());
+    }
+
+    @Provides
+    LinearLayoutManager provideLinearLayoutManager(BlogFragment blogFragment){
+        return new LinearLayoutManager(blogFragment.getActivity());
+    }
 
     @Provides
     ViewModelProvider.Factory provideBlogViewModel(BlogViewModel blogViewModel) {

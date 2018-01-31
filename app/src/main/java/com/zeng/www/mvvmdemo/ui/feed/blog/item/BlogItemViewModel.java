@@ -14,25 +14,23 @@ import java.util.List;
 
 public class BlogItemViewModel {
 
-    private ObservableField<String> mDescription;
-    private ObservableField<String> mTitle;
-    private ObservableField<String> mData;
-    private ObservableField<String> mAuthor;
-    private ObservableField<String> mBlogUrl;
+    public ObservableField<String> imageUrl;
+    public ObservableField<String> title;
+    public ObservableField<String> author;
+    public ObservableField<String> date;
+    public ObservableField<String> content;
     private BlogResponse.Blog mBlog;
     private BlogItemViewModelListener mListener;
 
-    private ObservableField<String> mImageUrl;
 
     public BlogItemViewModel(BlogResponse.Blog blog, BlogItemViewModelListener listener) {
         this.mBlog = blog;
         this.mListener = listener;
-        mImageUrl = new ObservableField<>(mBlog.getImgUrl());
-        mAuthor = new ObservableField<>(mBlog.getAuthor());
-        mBlogUrl = new ObservableField<>(mBlog.getBlogUrl());
-        mData = new ObservableField<>(mBlog.getData());
-        mDescription = new ObservableField<>(mBlog.getDescription());
-        mTitle = new ObservableField<>(mBlog.getTitle());
+        imageUrl = new ObservableField<>(mBlog.getImgUrl());
+        title = new ObservableField<>(mBlog.getTitle());
+        author = new ObservableField<>(mBlog.getAuthor());
+        date = new ObservableField<>(mBlog.getData());
+        content = new ObservableField<>(mBlog.getDescription());
     }
 
     public void onItemClick() {

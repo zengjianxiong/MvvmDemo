@@ -7,7 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.JsonObject;
 import com.zeng.www.mvvmdemo.R;
+
+import org.json.JSONObject;
+
+import java.io.Serializable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,7 +29,6 @@ public class OpenSourceFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-
     public OpenSourceFragment() {
         // Required empty public constructor
     }
@@ -34,6 +38,7 @@ public class OpenSourceFragment extends Fragment {
     public static OpenSourceFragment newInstance() {
         OpenSourceFragment fragment = new OpenSourceFragment();
         Bundle args = new Bundle();
+        
 
         fragment.setArguments(args);
         return fragment;
