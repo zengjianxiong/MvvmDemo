@@ -3,6 +3,7 @@ package com.zeng.www.mvvmdemo.di.builder;
 import com.zeng.www.mvvmdemo.ui.feed.blog.BlogFragmentProvider;
 import com.zeng.www.mvvmdemo.ui.feed.FeedActivity;
 import com.zeng.www.mvvmdemo.ui.feed.FeedActivityModule;
+import com.zeng.www.mvvmdemo.ui.feed.openSource.OpenSourceProvider;
 import com.zeng.www.mvvmdemo.ui.login.LoginActivity;
 import com.zeng.www.mvvmdemo.ui.login.LoginActivityModule;
 import com.zeng.www.mvvmdemo.ui.main.MainActivity;
@@ -31,7 +32,8 @@ public abstract class ActivityBuilder {
     @ContributesAndroidInjector(modules = MainActivityModule.class)
     abstract MainActivity bindMainActivity();
 
-    @ContributesAndroidInjector(modules = {FeedActivityModule.class, BlogFragmentProvider.class})
+    @ContributesAndroidInjector(modules = {FeedActivityModule.class,
+            BlogFragmentProvider.class, OpenSourceProvider.class})
     abstract FeedActivity bindFeedActivity();
 
 }

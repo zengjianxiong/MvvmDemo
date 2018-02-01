@@ -7,6 +7,7 @@ import com.zeng.www.mvvmdemo.data.local.prefs.PreferencesHelper;
 import com.zeng.www.mvvmdemo.data.model.api.BlogResponse;
 import com.zeng.www.mvvmdemo.data.model.api.LoginRequest;
 import com.zeng.www.mvvmdemo.data.model.api.LoginResponse;
+import com.zeng.www.mvvmdemo.data.model.api.OpenSourceResponse;
 import com.zeng.www.mvvmdemo.data.remote.ApiHeader;
 import com.zeng.www.mvvmdemo.data.remote.ApiHelper;
 
@@ -111,6 +112,11 @@ public class AppDataManager implements DataManager {
     @Override
     public Single<BlogResponse> doServiceGetBlogApiCall() {
         return mApiHelper.doServiceGetBlogApiCall();
+    }
+
+    @Override
+    public Single<OpenSourceResponse> getOpenSourceApiCall() {
+        return mApiHelper.getOpenSourceApiCall();
     }
 
 

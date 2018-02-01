@@ -8,7 +8,9 @@ import android.widget.ImageView;
 
 import com.zeng.www.mvvmdemo.R;
 import com.zeng.www.mvvmdemo.data.model.api.BlogResponse;
+import com.zeng.www.mvvmdemo.data.model.api.OpenSourceResponse;
 import com.zeng.www.mvvmdemo.ui.feed.blog.item.BlogAdapter;
+import com.zeng.www.mvvmdemo.ui.feed.openSource.item.OpenSourceAdapter;
 import com.zeng.www.mvvmdemo.utils.glide.GlideApp;
 
 import java.util.ArrayList;
@@ -36,6 +38,15 @@ public final class BindingUtils {
         if (blogAdapter != null) {
             blogAdapter.clearItems();
             blogAdapter.addItems(blogs);
+        }
+
+    }
+
+    @BindingAdapter({"adapter"})
+    public static void addOpenSourceItems(RecyclerView recyclerView, ArrayList<OpenSourceResponse.Repo> repos) {
+        OpenSourceAdapter openSourceAdapter = (OpenSourceAdapter) recyclerView.getAdapter();
+        if (openSourceAdapter != null) {
+            openSourceAdapter.setNewData(repos);
         }
 
     }

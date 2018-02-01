@@ -3,6 +3,7 @@ package com.zeng.www.mvvmdemo.data.remote;
 import com.zeng.www.mvvmdemo.data.model.api.BlogResponse;
 import com.zeng.www.mvvmdemo.data.model.api.LoginRequest;
 import com.zeng.www.mvvmdemo.data.model.api.LoginResponse;
+import com.zeng.www.mvvmdemo.data.model.api.OpenSourceResponse;
 
 import io.reactivex.Single;
 import io.reactivex.disposables.Disposable;
@@ -32,4 +33,5 @@ public interface ApiHelper {
 
     Single<BlogResponse> doServiceGetBlogApiCall();
 
+    Single<OpenSourceResponse> getOpenSourceApiCall();
 }

@@ -4,6 +4,7 @@ import com.rx2androidnetworking.Rx2AndroidNetworking;
 import com.zeng.www.mvvmdemo.data.model.api.BlogResponse;
 import com.zeng.www.mvvmdemo.data.model.api.LoginRequest;
 import com.zeng.www.mvvmdemo.data.model.api.LoginResponse;
+import com.zeng.www.mvvmdemo.data.model.api.OpenSourceResponse;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -33,6 +34,14 @@ public class AppApiHelper implements ApiHelper {
                 .addHeaders(mApiHeader.getProtectedApiHeader())
                 .build()
                 .getObjectSingle(BlogResponse.class);
+    }
+
+    @Override
+    public Single<OpenSourceResponse> getOpenSourceApiCall() {
+        return Rx2AndroidNetworking.post(ApiEndPoint.ENDPOINT_OPEN_SOURCE)
+                .addHeaders(mApiHeader.getProtectedApiHeader())
+                .build()
+                .getObjectSingle(OpenSourceResponse.class);
     }
 
     @Override
