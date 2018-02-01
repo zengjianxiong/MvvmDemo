@@ -37,13 +37,14 @@ public class BlogItemViewModel {
         mListener.onItemClick(mBlog);
     }
 
-    public void onItemLongClick() {
-        mListener.onItemLongClick(mBlog);
+    public boolean onItemLongClick() {
+         return mListener.onItemLongClick(mBlog);
     }
+
 
     public interface BlogItemViewModelListener {
         void onItemClick(BlogResponse.Blog blog);
 
-        void onItemLongClick(BlogResponse.Blog blog);
+        boolean onItemLongClick(BlogResponse.Blog blog);
     }
 }

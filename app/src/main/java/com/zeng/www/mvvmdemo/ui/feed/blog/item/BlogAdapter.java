@@ -76,6 +76,15 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
     }
 
+    public void addItems(List<BlogResponse.Blog> blogList) {
+        mBlogList.addAll(blogList);
+        notifyDataSetChanged();
+    }
+
+    public void clearItems() {
+        mBlogList.clear();
+    }
+
 
     private class BlogViewHolder extends BaseViewHolder implements BlogItemViewModel.BlogItemViewModelListener {
 
@@ -106,9 +115,12 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
 
         @Override
-        public void onItemLongClick(BlogResponse.Blog blog) {
+        public boolean onItemLongClick(BlogResponse.Blog blog) {
             Toast.makeText(itemView.getContext(), "onItemLongClick", Toast.LENGTH_SHORT).show();
+            return false;
         }
+
+
     }
 
     private class BlogEmptyHolder extends BaseViewHolder implements BlogEmptyViewModel.BlogEmptyViewModelListener {

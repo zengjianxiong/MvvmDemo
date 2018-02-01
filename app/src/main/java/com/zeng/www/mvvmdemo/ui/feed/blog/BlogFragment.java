@@ -104,4 +104,9 @@ public class BlogFragment extends BaseFragment<FragmentBlogBinding, BlogViewMode
     public void onRetryClick() {
         mBlogViewModel.fetchBlog();
     }
+
+    @Override
+    public void updateBlog(List<BlogResponse.Blog> blogList) {
+        mBlogAdapter.addItems(blogList);
+    }
 }

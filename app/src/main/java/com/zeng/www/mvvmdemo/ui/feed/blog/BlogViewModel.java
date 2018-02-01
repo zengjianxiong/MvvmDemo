@@ -21,7 +21,7 @@ import io.reactivex.functions.Consumer;
 
 public class BlogViewModel extends BaseViewModel<BlogNavigator> {
 
-    private ObservableArrayList<BlogResponse.Blog> mBlogObservableArrayList = new ObservableArrayList<>();
+    private ObservableArrayList<BlogResponse.Blog> blogObservableArrayList = new ObservableArrayList<>();
     private MutableLiveData<List<BlogResponse.Blog>> mBlogListLiveData;
 
     public BlogViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
@@ -57,11 +57,11 @@ public class BlogViewModel extends BaseViewModel<BlogNavigator> {
     }
 
     public void addBlogItemsToList(List<BlogResponse.Blog> blogList) {
-        mBlogObservableArrayList.clear();
-        mBlogObservableArrayList.addAll(blogList);
+        blogObservableArrayList.clear();
+        blogObservableArrayList.addAll(blogList);
     }
 
     public ObservableArrayList<BlogResponse.Blog> getBlogObservableArrayList() {
-        return mBlogObservableArrayList;
+        return blogObservableArrayList;
     }
 }
