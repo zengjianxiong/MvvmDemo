@@ -26,6 +26,7 @@ public final class BindingUtils {
         Context context = imageView.getContext();
         GlideApp.with(context)
                 .load(url)
+                .centerCrop()
                 .placeholder(R.mipmap.ic_launcher_round)
                 .error(R.mipmap.ic_launcher_round)
                 .into(imageView);
